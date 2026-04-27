@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿namespace VehicleParts.Application.DTOs;
 
-namespace VehicleParts.Application.DTOs
+public class CreateServiceReviewDto
 {
-    internal class CreateServiceReviewDto
-    {
-    }
+    public int CustomerId { get; set; }
+    public int AppointmentId { get; set; }
+    public int Rating { get; set; }
+    public string Comment { get; set; } = string.Empty;
 }

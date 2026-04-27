@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿namespace VehicleParts.Application.DTOs;
 
-namespace VehicleParts.Application.DTOs
+public class CreateAppointmentDto
 {
-    internal class CreateAppointmentDto
-    {
-    }
+    public int CustomerId { get; set; }
+    public int VehicleId { get; set; }
+    public DateTime AppointmentDate { get; set; }
+    public string ServiceType { get; set; } = string.Empty;
+    public string Notes { get; set; } = string.Empty;
 }
