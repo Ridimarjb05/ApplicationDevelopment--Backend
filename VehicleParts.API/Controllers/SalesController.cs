@@ -16,7 +16,7 @@ public class SalesController : ControllerBase
 
         decimal discount = 0;
 
-        // 🔥 Feature 16: Loyalty logic
+        // Feature 16: Apply 10% loyalty discount when total purchase amount is greater than 5000
         if (total > 5000)
         {
             discount = total * 0.10m;
