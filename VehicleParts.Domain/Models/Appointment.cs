@@ -1,10 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿namespace VehicleParts.Domain.Models;
 
-namespace VehicleParts.Domain.Models
+public class Appointment
 {
-    internal class Appointment
-    {
-    }
+    public int Id { get; set; }
+    public int CustomerId { get; set; }
+    public int VehicleId { get; set; }
+    public DateTime AppointmentDate { get; set; }
+    public string ServiceType { get; set; } = string.Empty;
+    public string Status { get; set; } = "Pending";
+    public string Notes { get; set; } = string.Empty;
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 }
