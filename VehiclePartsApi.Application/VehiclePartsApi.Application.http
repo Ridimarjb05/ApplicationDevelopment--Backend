@@ -1,0 +1,13 @@
+@VehiclePartsApi.Application_HostAddress = http://localhost:5209
+
+#if (EnableOpenAPI)
+GET {{VehiclePartsApi.Application_HostAddress}}/openapi/v1.json
+Accept: application/json
+
+###
+#endif
+
+GET {{VehiclePartsApi.Application_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
