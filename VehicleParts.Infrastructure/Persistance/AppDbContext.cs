@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using VehicleParts.Domain.Models;
 
 namespace VehicleParts.Infrastructure.Persistance;

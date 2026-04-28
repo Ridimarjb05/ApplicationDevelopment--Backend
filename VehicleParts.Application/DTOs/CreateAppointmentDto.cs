@@ -1,4 +1,4 @@
-﻿namespace VehicleParts.Application.DTOs;
+namespace VehicleParts.Application.DTOs;
 
 public class CreateAppointmentDto
 {

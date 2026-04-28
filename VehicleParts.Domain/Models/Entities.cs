@@ -1,4 +1,4 @@
-﻿namespace VehicleParts.Domain.Models;
+namespace VehicleParts.Domain.Models;
 
 public class User
 {
