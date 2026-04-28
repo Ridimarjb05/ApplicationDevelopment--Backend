@@ -1,0 +1,18 @@
+{
+    "ConnectionStrings": {
+        "DefaultConnection": "Host=localhost;Port=5432;Database=vehicle;Username=postgres;Password=safal"
+    },
+    "JwtSettings": {
+        "Key": "AutoPartsSecretKeyMakeItLongAtLeast32Chars!",
+        "Issuer": "AutoParts",
+        "Audience": "AutoPartsUsers",
+        "ExpiryMinutes": 60
+    },
+    "Logging": {
+        "LogLevel": {
+            "Default": "Information",
+            "Microsoft.AspNetCore": "Warning"
+        }
+    },
+    "AllowedHosts": "*"
+}
