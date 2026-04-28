@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using VehicleParts.Domain.Models;
 
-namespace VehicleParts.Application.Interface.IRepository
+namespace VehicleParts.Application.Interface.IRepository;
+
+public interface IServiceReviewRepository
 {
-    internal class IServiceReviewRepository
-    {
-    }
+    Task<ServiceReview> CreateServiceReviewAsync(ServiceReview review);
+    Task<IEnumerable<ServiceReview>> GetReviewsByCustomerIdAsync(int customerId);
 }

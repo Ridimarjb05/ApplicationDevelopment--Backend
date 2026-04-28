@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using VehicleParts.Domain.Models;
 
-namespace VehicleParts.Application.Interface.IRepository
+namespace VehicleParts.Application.Interface.IRepository;
+
+public interface IPartRequestRepository
 {
-    internal class IPartRequestRepository
-    {
-    }
+    Task<PartRequest> CreatePartRequestAsync(PartRequest partRequest);
+    Task<IEnumerable<PartRequest>> GetPartRequestsByCustomerIdAsync(int customerId);
 }
