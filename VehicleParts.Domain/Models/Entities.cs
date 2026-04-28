@@ -1,4 +1,7 @@
-﻿namespace VehicleParts.Domain.Models;
+using System;
+using System.Collections.Generic;
+
+namespace VehicleParts.Domain.Models;
 
 public class User
 {
@@ -204,5 +207,20 @@ public class Notification
     public string Message { get; set; } = string.Empty;
     public bool IsRead { get; set; } = false;
     public bool EmailSent { get; set; } = false;
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+}
+
+// this records every time stock is added for a part so we have a full history
+public class StockTransaction
+{
+    public int ID { get; set; }
+    public int PartID { get; set; }
+    public Part Part { get; set; } = null!;
+
+    // how many units were added to stock
+    public int Quantity { get; set; }
+
+    // reason like "Purchase" or "Adjustment"
+    public string Reason { get; set; } = "Purchase";
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 }
