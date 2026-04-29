@@ -6,5 +6,6 @@ namespace VehicleParts.Application.Interface.IServices
     public interface ISalesService
     {
         Sale CreateSale(SaleRequestDto request);
+        Sale CalculateLoyaltyDiscount(SaleRequestDto request);
     }
 }

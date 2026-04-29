@@ -15,11 +15,29 @@ namespace VehicleParts.API.Controllers
             _salesService = salesService;
         }
 
+        // Feature 7: Create sales invoice
         [HttpPost("create-sale")]
         public IActionResult CreateSale([FromBody] SaleRequestDto request)
         {
             var sale = _salesService.CreateSale(request);
             return Ok(sale);
+        }
+
+        // Feature 16: Loyalty discount calculation
+        [HttpPost("calculate-loyalty-discount")]
+        public IActionResult CalculateLoyaltyDiscount([FromBody] SaleRequestDto request)
+        {
+            var sale = _salesService.CalculateLoyaltyDiscount(request);
+
+            return Ok(new
+            {
+                sale.TotalAmount,
+                sale.Discount,
+                sale.FinalAmount,
+                Message = sale.Discount > 0
+                    ? "10% loyalty discount applied."
+                    : "No loyalty discount applied."
+            });
         }
     }
 }

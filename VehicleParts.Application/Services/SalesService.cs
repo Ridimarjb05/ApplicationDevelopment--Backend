@@ -10,6 +10,22 @@ namespace VehicleParts.Application.Services
 
         public Sale CreateSale(SaleRequestDto request)
         {
+            var sale = BuildSale(request);
+
+            sales.Add(sale);
+
+            return sale;
+        }
+
+        public Sale CalculateLoyaltyDiscount(SaleRequestDto request)
+        {
+            var sale = BuildSale(request);
+
+            return sale;
+        }
+
+        private Sale BuildSale(SaleRequestDto request)
+        {
             decimal total = request.Items.Sum(i => i.Price * i.Quantity);
 
             decimal discount = 0;
@@ -22,7 +38,7 @@ namespace VehicleParts.Application.Services
 
             decimal finalAmount = total - discount;
 
-            var sale = new Sale
+            return new Sale
             {
                 Id = sales.Count + 1,
                 CustomerId = request.CustomerId,
@@ -31,10 +47,6 @@ namespace VehicleParts.Application.Services
                 FinalAmount = finalAmount,
                 Date = DateTime.Now
             };
-
-            sales.Add(sale);
-
-            return sale;
         }
     }
 }

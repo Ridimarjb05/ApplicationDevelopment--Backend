@@ -17,3 +17,18 @@ Content-Type: application/json
     }
   ]
 }
+
+###
+
+POST {{VehicleParts.API_HostAddress}}/api/Sales/calculate-loyalty-discount
+Content-Type: application/json
+
+{
+  "customerId": 1,
+  "items": [
+    {
+      "price": 3000,
+      "quantity": 2
+    }
+  ]
+}
