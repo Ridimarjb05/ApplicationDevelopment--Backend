@@ -1,41 +1,25 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using VehicleParts.Domain.Models;
-using System.Collections.Generic;
-using System.Linq;
+using VehicleParts.Application.DTOs;
+using VehicleParts.Application.Interface.IServices;
 
-[ApiController]
-[Route("api/[controller]")]
-public class SalesController : ControllerBase
+namespace VehicleParts.API.Controllers
 {
-    private static List<Sale> sales = new List<Sale>();
-
-    [HttpPost("create-sale")]
-    public IActionResult CreateSale([FromBody] SaleRequest request)
+    [ApiController]
+    [Route("api/[controller]")]
+    public class SalesController : ControllerBase
     {
-        decimal total = request.Items.Sum(i => i.Price * i.Quantity);
+        private readonly ISalesService _salesService;
 
-        decimal discount = 0;
-
-        // Feature 16: Apply 10% loyalty discount when total purchase amount is greater than 5000
-        if (total > 5000)
+        public SalesController(ISalesService salesService)
         {
-            discount = total * 0.10m;
+            _salesService = salesService;
         }
 
-        decimal finalAmount = total - discount;
-
-        var sale = new Sale
+        [HttpPost("create-sale")]
+        public IActionResult CreateSale([FromBody] SaleRequestDto request)
         {
-            Id = sales.Count + 1,
-            CustomerId = request.CustomerId,
-            TotalAmount = total,
-            Discount = discount,
-            FinalAmount = finalAmount,
-            Date = DateTime.Now
-        };
-
-        sales.Add(sale);
-
-        return Ok(sale);
+            var sale = _salesService.CreateSale(request);
+            return Ok(sale);
+        }
     }
 }
