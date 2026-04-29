@@ -20,11 +20,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\VehicleParts.Application\VehicleParts.Application.csproj" />
+    <ProjectReference Include="..\VehicleParts.Domain\VehicleParts.Domain.csproj" />
     <ProjectReference Include="..\VehicleParts.Infrastructure\VehicleParts.Infrastructure.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>
