@@ -36,5 +36,86 @@ public class AppDbContext : DbContext
         modelBuilder.Entity<Appointment>().HasKey(a => a.AppointmentID);
         modelBuilder.Entity<ServiceReview>().HasKey(s => s.ReviewID);
         modelBuilder.Entity<Notification>().HasKey(n => n.NotificationID);
+
+        // Configure foreign key relationships
+        modelBuilder.Entity<Vehicle>()
+            .HasOne(v => v.CustomerDetail)
+            .WithMany(c => c.Vehicles)
+            .HasForeignKey(v => v.CustomerID);
+
+        modelBuilder.Entity<Invoice>()
+            .HasOne(i => i.CustomerDetail)
+            .WithMany(c => c.Invoices)
+            .HasForeignKey(i => i.CustomerID);
+
+        modelBuilder.Entity<Invoice>()
+            .HasOne(i => i.StaffDetail)
+            .WithMany(s => s.Invoices)
+            .HasForeignKey(i => i.StaffID);
+
+        modelBuilder.Entity<LoyaltyTransaction>()
+            .HasOne(l => l.CustomerDetail)
+            .WithMany(c => c.LoyaltyTransactions)
+            .HasForeignKey(l => l.CustomerID);
+
+        modelBuilder.Entity<PartRequest>()
+            .HasOne(p => p.CustomerDetail)
+            .WithMany(c => c.PartRequests)
+            .HasForeignKey(p => p.CustomerID);
+
+        modelBuilder.Entity<Appointment>()
+            .HasOne(a => a.CustomerDetail)
+            .WithMany(c => c.Appointments)
+            .HasForeignKey(a => a.CustomerID);
+
+        modelBuilder.Entity<Appointment>()
+            .HasOne(a => a.StaffDetail)
+            .WithMany(s => s.Appointments)
+            .HasForeignKey(a => a.StaffID);
+
+        modelBuilder.Entity<Appointment>()
+            .HasOne(a => a.Vehicle)
+            .WithMany()
+            .HasForeignKey(a => a.VehicleID);
+
+        modelBuilder.Entity<ServiceReview>()
+            .HasOne(s => s.CustomerDetail)
+            .WithMany(c => c.ServiceReviews)
+            .HasForeignKey(s => s.CustomerID);
+
+        modelBuilder.Entity<ServiceReview>()
+            .HasOne(s => s.Appointment)
+            .WithMany(a => a.ServiceReviews)
+            .HasForeignKey(s => s.AppointmentID);
+
+        modelBuilder.Entity<StaffDetail>()
+            .HasOne(s => s.User)
+            .WithOne(u => u.StaffDetail)
+            .HasForeignKey<StaffDetail>(s => s.UserID);
+
+        modelBuilder.Entity<CustomerDetail>()
+            .HasOne(c => c.User)
+            .WithOne(u => u.CustomerDetail)
+            .HasForeignKey<CustomerDetail>(c => c.UserID);
+
+        modelBuilder.Entity<Part>()
+            .HasOne(p => p.Vendor)
+            .WithMany(v => v.Parts)
+            .HasForeignKey(p => p.VendorID);
+
+        modelBuilder.Entity<InvoiceItem>()
+            .HasOne(i => i.Invoice)
+            .WithMany(inv => inv.InvoiceItems)
+            .HasForeignKey(i => i.InvoiceID);
+
+        modelBuilder.Entity<InvoiceItem>()
+            .HasOne(i => i.Part)
+            .WithMany(p => p.InvoiceItems)
+            .HasForeignKey(i => i.PartID);
+
+        modelBuilder.Entity<Notification>()
+            .HasOne(n => n.User)
+            .WithMany(u => u.Notifications)
+            .HasForeignKey(n => n.UserID);
     }
 }
